@@ -1,0 +1,57 @@
+﻿@model project_3.Blog
+
+<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>New Entry</legend>
+        <h2>Error, try again.</h2>
+
+        @Html.HiddenFor(model => model.blogID)
+
+        <div class="editor-label">
+            <!--@Html.LabelFor(model => model.title)-->
+            <h4>Title</h4>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.title)
+            @Html.ValidationMessageFor(model => model.title)
+        </div>
+
+        <div class="editor-label">
+            <!--@Html.LabelFor(model => model.content)-->
+            <h4>Content</h4>
+        </div>
+        <div class="content-editor-field">
+            @Html.TextAreaFor(model => model.content)
+            @Html.ValidationMessageFor(model => model.content)
+        </div>
+        
+        <div class="editor-label">
+           <!--@Html.LabelFor(model => model.category)-->
+            <h4>Category</h4>
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.category, new[]
+            {
+            //new SelectListItem { Text = "Please select" }, 
+                new SelectListItem { Value = "Sports", Text="Sports" },  
+                new SelectListItem { Value = "News", Text="News" },
+                new SelectListItem { Value = "Politics", Text="Politics" }
+            })
+
+            @Html.ValidationMessageFor(model => model.category)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<project_3.Blog>
+<link rel ="stylesheet" type ="text/css" href="../../Content/rowdypanda.css" />
+
+<h1 id ="news_main_header">Latest entries</h1><br />
+@foreach (var b in Model)
+{ 
+    
+    <div class = "news_divs">
+        <h2 class ="news_title"> @Html.ActionLink(b.title, "Edit", new { id = b.blogID })</h2>
+        <span class ="news_timestamp">@b.blogDate</span><br />
+        <p class ="news_content">@b.content</p>
+    </div>
+}
