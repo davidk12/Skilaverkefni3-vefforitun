@@ -1,1 +1,2 @@
-# Skilaverkefni3-vefforitun
+# Skilaverkefni3-vefforritun
+# LINQ Project
